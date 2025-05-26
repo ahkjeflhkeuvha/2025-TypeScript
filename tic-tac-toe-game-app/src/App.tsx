@@ -27,8 +27,20 @@ const tileStyle: React.CSSProperties = {
   cursor: "pointer",
 }
 
+const oStyle: React.CSSProperties = {
+  color: "white",
+  background: "black",
+}
+const xStyle: React.CSSProperties = {
+  color: "black",
+  background: "white",
+}
+
 function Tile({ index, type, onTileClick} : TileProps) {
-  return <button style={tileStyle} onClick={() => onTileClick(index)}>{type ?? "-"}</button>
+  return <button style={{
+    ...tileStyle,
+    ...(type === null ? {} : (type === 'o' ? oStyle : xStyle))
+  }} onClick={() => onTileClick(index)}>{type ?? "-"}</button>
 }
 
   
