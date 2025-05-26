@@ -50,9 +50,10 @@ function PasswordStrength(props : {minLength : number }) {
 
     return (
         <div>
-            <input type="text" value={inputedText} onChange={(e) => setInputedText(e.target.value)} />
+            <input type={show ? "text" : "password"} value={inputedText} onChange={(e) => setInputedText(e.target.value)} />
             {show ? <p style={{color : strength === "weak" ? "red" : strength === "mid" ? "yellow" : "green"}}>{inputedText}</p> : <p>{"*".repeat(inputedText.length)}</p>}
             <button onClick={() => setShow(s => !s)}>{show ? "숨기기" : "보여주기"}</button>
+            <p>{inputedText.length} / {props.minLength}</p>
         </div>
     )
 }
