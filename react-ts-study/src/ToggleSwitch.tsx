@@ -90,7 +90,7 @@ function RatingStarts({ labels }: RatingProps) {
 
   return (
     <div>
-      {labels.map((label, idx) => {
+      {labels.map((_, idx) => {
         return (
           <span onClick={() => setRate(idx)}>{idx <= rate ? "★" : "☆"}</span>
         );
