@@ -58,10 +58,28 @@ function PasswordStrength(props : {minLength : number }) {
     )
 }
 
-function App() {      
+type RatingProps = {
+    labels : string[];
+}
+
+function RatingStarts({ labels } : RatingProps) {
+    const [rate, setRate] = useState(-1);
+
     return (
         <div>
-           <PasswordStrength minLength={8} />
+            {labels.map((label, idx) => {
+                return <span onClick={() => setRate(idx)}>{idx <= rate ? '★' : '☆'}</span>
+            })}
+            <p>{labels[rate]}</p>
+        </div>
+    )
+}
+
+function App() {      
+    const labels = ["별로예요", "그저그래요", "괜찮아요", "좋아요", "최고예요"]
+    return (
+        <div>
+           <RatingStarts labels={labels} />
         </div>
     )
 }
